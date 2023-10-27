@@ -3,7 +3,7 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import FormControl from "@mui/material/FormControl";
 
-export default function ContainedButton({ Label, Type }) {
+export default function ContainedButton({ label, type }) {
   return (
     <FormControl
       sx={{
@@ -18,9 +18,9 @@ export default function ContainedButton({ Label, Type }) {
         }}
         variant="contained"
         color="warning"
-        type={Type}
+        type={type}
       >
-        {Label}
+        {label}
       </Button>
     </FormControl>
   );
