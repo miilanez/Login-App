@@ -15,7 +15,6 @@ export default function InputTextField({ label, type, value, onChange, error, he
         onChange={onChange}
         error={error}
         helperText={helperText}
-        variant="outlined"
         color="warning"
       />
     </FormControl>

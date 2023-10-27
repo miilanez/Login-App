@@ -15,7 +15,9 @@ const LoginPage = () => {
     email: Yup.string()
       .email("Digite um email válido")
       .required("O email é obrigatório"),
-    password: Yup.string().required("A senha é obrigatória"),
+    password: Yup.string()
+      .min(8, "A senha precisa ter pelo menos 8 caracteres")
+      .required("A senha é obrigatória"),
   });
 
   const handleSubmit = (values) => {
@@ -37,7 +39,7 @@ const LoginPage = () => {
       <form onSubmit={formik.handleSubmit}>
         <div id="fields">
           <InputTextField
-            label="Login"
+            label="Email"
             type="email"
             value={formik.values.email}
             onChange={formik.handleChange}
