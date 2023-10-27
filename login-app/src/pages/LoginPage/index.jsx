@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import InputTextField from "../../components/InputTextField";
 import InputPassword from "../../components/InputPassword";
 import ContainedButton from "../../components/Button";
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
   const initialValues = {
@@ -57,6 +58,10 @@ const LoginPage = () => {
         </div>
         <div id="action">
           <ContainedButton label="Entrar" type="submit" />
+
+          <h3>
+            <Link to="/cadastro">Ir para a página de cadastro</Link>
+          </h3>
         </div>
       </form>
     </div>
