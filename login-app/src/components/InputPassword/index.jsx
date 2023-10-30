@@ -8,6 +8,8 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { TextField } from "@mui/material";
 
 export default function InputPassword({
+  id,
+  name,
   label,
   value,
   onChange,
@@ -26,8 +28,9 @@ export default function InputPassword({
     <div>
       <FormControl sx={{ width: "100%", my: 1 }} variant="outlined">
         <TextField
+          id={id}
+          name={name}
           type={showPassword ? "text" : "password"}
-          name="password"
           label={label}
           value={value}
           onChange={onChange}

@@ -3,12 +3,21 @@ import * as React from "react";
 import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
 
-export default function InputTextField({ label, type, value, onChange, error, helperText }) {
+export default function InputTextField({
+  id,
+  name,
+  label,
+  type,
+  value,
+  onChange,
+  error,
+  helperText,
+}) {
   return (
     <FormControl sx={{ width: "100%", my: 1 }} variant="outlined">
       <TextField
-        id="email"
-        name="email"
+        id={id}
+        name={name}
         type={type}
         label={label}
         value={value}

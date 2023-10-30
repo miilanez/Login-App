@@ -7,29 +7,21 @@ import ContainedButton from "../../components/Button";
 import { Link } from "react-router-dom";
 
 const LoginPage = () => {
-  const initialValues = {
-    email: "",
-    password: "",
-  };
-
-  const validationSchema = Yup.object().shape({
-    email: Yup.string()
-      .email("Digite um email válido")
-      .required("O email é obrigatório"),
-    password: Yup.string()
-      .min(8, "A senha precisa ter pelo menos 8 caracteres")
-      .required("A senha é obrigatória"),
-  });
-
-  const handleSubmit = (values) => {
-    // Faça a lógica de autenticação aqui, por exemplo, enviar os dados para um servidor
-    console.log(values);
-  };
-
   const formik = useFormik({
-    initialValues,
-    validationSchema,
-    onSubmit: handleSubmit,
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: Yup.object({
+      email: Yup.string().email("Email inválido").required("Campo obrigatório"),
+      password: Yup.string()
+        .min(8, "A senha precisa ter pelo menos 8 caracteres")
+        .required("Campo obrigatório"),
+    }),
+    onSubmit: (values) => {
+      // Lógica de envio do formulário de login
+      console.log(values);
+    },
   });
 
   return (
@@ -40,6 +32,8 @@ const LoginPage = () => {
       <form onSubmit={formik.handleSubmit}>
         <div id="fields">
           <InputTextField
+            id="email"
+            name="email"
             label="Email"
             type="email"
             value={formik.values.email}
@@ -49,6 +43,8 @@ const LoginPage = () => {
           />
 
           <InputPassword
+            id="password"
+            name="password"
             label="Senha"
             value={formik.values.password}
             onChange={formik.handleChange}
@@ -59,9 +55,11 @@ const LoginPage = () => {
         <div id="action">
           <ContainedButton label="Entrar" type="submit" />
 
-          <h3>
-            <Link to="/cadastro">Ir para a página de cadastro</Link>
-          </h3>
+          <div className="flex justify-center text-center mt-7">
+            <Link to="/cadastro">
+              Está sem cadastro? <b className="text-orange-600">Crie Aqui!</b>
+            </Link>
+          </div>
         </div>
       </form>
     </div>
